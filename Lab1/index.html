@@ -1,1 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Triangle Lab</title>
+   </head>
+<body>
 
+<h2>Лабораторна робота 1</h2>
+
+<script>
+
+console.log("Use: triangle(value1, type1, value2, type2)");
+
+function triangle(v1, t1, v2, t2) {
+  // 1) базові перевірки
+  if (v1 <= 0 || v2 <= 0) {
+    console.log("Zero or negative input");
+    return "Zero or negative input";
+  }
+
+  const validTypes = ["leg", "hypotenuse", "adjacent angle", "opposite angle", "angle"];
+  if (!validTypes.includes(t1) || !validTypes.includes(t2)) {
+    console.log("Read the instruction again");
+    return "failed";
+  }
+
+  const deg2rad = (deg) => (deg * Math.PI) / 180;
+  const rad2deg = (rad) => (rad * 180) / Math.PI;
+
+  const print = (a, b, c, alpha, beta) => {
+    console.log("a =", a);
+    console.log("b =", b);
+    console.log("c =", c);
+    console.log("alpha =", alpha);
+    console.log("beta =", beta);
+  };
+
+  // якщо задано "leg" — це буде "a"
+  // "opposite angle" — це alpha (протилежний до a)
+  // "adjacent angle" — це beta (прилеглий до a)
+
+  // 2) leg + hypotenuse
+  if (
+    (t1 === "leg" && t2 === "hypotenuse") ||
+    (t2 === "leg" && t1 === "hypotenuse")
+  ) {
+    const a = t1 === "leg" ? v1 : v2;
+    const c = t1 === "hypotenuse" ? v1 : v2;
+
+    if (a >= c) return "Leg cannot be greater than hypotenuse";
+
+    const b = Math.sqrt(c * c - a * a);
+    const alpha = rad2deg(Math.asin(a / c));
+    const beta = 90 - alpha;
+
+    print(a, b, c, alpha, beta);
+    return "success";
+  }
+
+  // 3) opposite angle + leg  (alpha + a)
+  if (
+    (t1 === "opposite angle" && t2 === "leg") ||
+    (t2 === "opposite angle" && t1 === "leg")
+  ) {
+    const alpha = t1 === "opposite angle" ? v1 : v2;
+    const a = t1 === "leg" ? v1 : v2;
+
+    if (alpha <= 0 || alpha >= 90) return "Angle must be between 0 and 90";
+
+    const rad = deg2rad(alpha);
+    const c = a / Math.sin(rad);
+    const b = Math.sqrt(c * c - a * a);
+    const beta = 90 - alpha;
+
+    print(a, b, c, alpha, beta);
+    return "success";
+  }
+
+  // 4) adjacent angle + leg  (beta + a)
+  if (
+    (t1 === "adjacent angle" && t2 === "leg") ||
+    (t2 === "adjacent angle" && t1 === "leg")
+  ) {
+    const beta = t1 === "adjacent angle" ? v1 : v2;
+    const a = t1 === "leg" ? v1 : v2;
+
+    if (beta <= 0 || beta >= 90) return "Angle must be between 0 and 90";
+
+    const rad = deg2rad(beta);
+    const c = a / Math.cos(rad);         // cos(beta)=a/c (бо a прилеглий до beta)
+    const b = Math.sqrt(c * c - a * a);
+    const alpha = 90 - beta;
+
+    print(a, b, c, alpha, beta);
+    return "success";
+  }
+
+  // 5) hypotenuse + angle  (c + alpha)  <-- тут тип має бути саме "angle"
+  if (
+    (t1 === "hypotenuse" && t2 === "angle") ||
+    (t2 === "hypotenuse" && t1 === "angle")
+  ) {
+    const c = t1 === "hypotenuse" ? v1 : v2;
+    const alpha = t1 === "angle" ? v1 : v2;
+
+    if (alpha <= 0 || alpha >= 90) return "Angle must be between 0 and 90";
+
+    const rad = deg2rad(alpha);
+    const a = c * Math.sin(rad);
+    const b = c * Math.cos(rad);
+    const beta = 90 - alpha;
+
+    print(a, b, c, alpha, beta);
+    return "success";
+  }
+
+  // 6) leg + leg (a + b)
+  if (t1 === "leg" && t2 === "leg") {
+    const a = v1;
+    const b = v2;
+
+    const c = Math.sqrt(a * a + b * b);
+    const alpha = rad2deg(Math.atan2(a, b));
+    const beta = 90 - alpha;
+
+    print(a, b, c, alpha, beta);
+    return "success";
+  }
+
+  // 7) якщо пара типів несумісна
+  console.log("Read the instruction again");
+  return "failed";
+}
+
+</script>
+</body>
+</html>
