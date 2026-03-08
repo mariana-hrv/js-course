@@ -286,7 +286,7 @@ function PiMultiplier(num) {
   };
 }
 let func1 = PiMultiplier(2);
-let func2 = PiMultiplier(3 / 2);
+let func2 = PiMultiplier(2 / 3);
 let func3 = PiMultiplier(1 / 2);
 
 console.log(func1());
@@ -332,3 +332,4 @@ PaintRed(obj3);
 PaintYellow(obj1);
 PaintYellow(obj2);
 PaintYellow(obj3);
+
