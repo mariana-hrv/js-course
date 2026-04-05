@@ -29,7 +29,13 @@
       sortLib.quickSort([...arr]);
 
       console.log("~ Розріджений масив ~");
-      console.log(sparse);
+     for (let i = 0; i < sparse.length; i++) {
+        if (i in sparse) {
+          console.log(i + ":", sparse[i]);
+        } else {
+          console.log(i + ":", undefined);
+        }
+      }
       sortLib.bubbleSort([...sparse]);
       sortLib.selectionSort([...sparse]);
       sortLib.insertionSort([...sparse]);
