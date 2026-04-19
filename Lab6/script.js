@@ -12,7 +12,7 @@ let lastClickCol = -1;
 let lastClickTime = 0;
 
 function loadLevels() {
-  fetch("./levels.json")
+  fetch("levels.json")
     .then(function (response) {
       if (!response.ok) {
         throw new Error("HTTP error: " + response.status);
