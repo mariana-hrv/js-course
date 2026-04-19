@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lights Out</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>5x5 LightsOut</h1>
+
+  <div class="game-wrapper">
+    <div class="controls">
+      <button id="newGameBtn" type="button">New Game</button>
+      <button id="restartBtn" type="button">Restart</button>
+    </div>
+
+    <div class="center-part">
+      <div id="game" class="board"></div>
+
+      <div class="info">
+        <span>Target: <span id="minMoves">0</span></span>
+        <span>Moves: <span id="moves">0</span></span>
+        <span>Time: <span id="time">0:00</span></span>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
