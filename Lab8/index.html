@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Лабораторна робота №8</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo">Lab 8</div>
+
+      <button class="hamburger" id="hamburgerBtn">☰</button>
+
+      <nav class="nav" id="navMenu">
+        <a href="#home">🏠 Головна</a>
+        <a href="#gallery">🌄 Галерея</a>
+        <a href="#carousel">🔄Карусель</a>
+        <a href="#contacts">📞 Контакти</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+      </section>
+
+      <section class="carousel-section" id="carousel">
+        <h2>Адаптивна карусель</h2>
+
+        <div class="carousel">
+          <div class="slides" id="slides">
+            <img
+              src="https://placehold.co/900x400/7fb3d5/ffffff?text=Slide+1"
+              alt="Слайд 1"
+            />
+            <img
+              src="https://placehold.co/900x400/76d7c4/ffffff?text=Slide+2"
+              alt="Слайд 2"
+            />
+            <img
+              src="https://placehold.co/900x400/f7dc6f/ffffff?text=Slide+3"
+              alt="Слайд 3"
+            />
+            <img
+              src="https://placehold.co/900x400/f1948a/ffffff?text=Slide+4"
+              alt="Слайд 4"
+            />
+          </div>
+
+          <button class="arrow left" id="prevBtn">&#10094;</button>
+          <button class="arrow right" id="nextBtn">&#10095;</button>
+        </div>
+
+        <div class="dots" id="dots"></div>
+      </section>
+
+      <section class="images-section" id="gallery">
+        <h2>Зображення для різних пристроїв</h2>
+
+        <div class="large-images">
+          <h3>Ці зображення видно тільки на Large-пристроях</h3>
+          <div class="image-grid">
+            <img
+              src="https://placehold.co/300x200/5dade2/ffffff?text=Large+1"
+              alt="Large 1"
+            />
+            <img
+              src="https://placehold.co/300x200/48c9b0/ffffff?text=Large+2"
+              alt="Large 2"
+            />
+            <img
+              src="https://placehold.co/300x200/af7ac5/ffffff?text=Large+3"
+              alt="Large 3"
+            />
+          </div>
+        </div>
+
+        <div class="medium-images">
+          <h3>Ці зображення видно тільки на Medium-пристроях</h3>
+          <div class="image-grid">
+            <img
+              src="https://placehold.co/300x200/f5b041/ffffff?text=Medium+1"
+              alt="Medium 1"
+            />
+            <img
+              src="https://placehold.co/300x200/ec7063/ffffff?text=Medium+2"
+              alt="Medium 2"
+            />
+            <img
+              src="https://placehold.co/300x200/58d68d/ffffff?text=Medium+3"
+              alt="Medium 3"
+            />
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contacts">
+      <p>Лабораторна робота №8 | HTML, CSS, JavaScript</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
