@@ -1,0 +1,42 @@
+{
+  "category": {
+    "id": 3,
+    "name": "Десерти",
+    "shortname": "desserts",
+    "notes": "Lorem ipsum dolor sit amet consectetur adipiscing elit."
+  },
+  "items": [
+    {
+      "id": 1,
+      "name": "Чізкейк",
+      "shortname": "cheesecake",
+      "description": "Lorem ipsum dolor sit amet consectetur adipiscing elit.",
+      "price": 120,
+      "image": "https://placehold.co/200x200?text=Чізкейк"
+    },
+    {
+      "id": 2,
+      "name": "Шоколадний торт",
+      "shortname": "chocolate_cake",
+      "description": "Lorem ipsum dolor sit amet consectetur adipiscing elit.",
+      "price": 130,
+      "image": "https://placehold.co/200x200?text=Шоколадний+торт"
+    },
+    {
+      "id": 3,
+      "name": "Морозиво",
+      "shortname": "ice_cream",
+      "description": "Lorem ipsum dolor sit amet consectetur adipiscing elit.",
+      "price": 90,
+      "image": "https://placehold.co/200x200?text=Морозиво"
+    },
+    {
+      "id": 4,
+      "name": "Тірамісу",
+      "shortname": "tiramisu",
+      "description": "Lorem ipsum dolor sit amet consectetur adipiscing elit.",
+      "price": 140,
+      "image": "https://placehold.co/200x200?text=Тірамісу"
+    }
+  ]
+}
