@@ -1,0 +1,1240 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Налаштування мереж у Windows</title>
+    <style>
+      :root {
+        --bg: #eef3f8;
+        --panel: #ffffff;
+        --text: #1f2937;
+        --muted: #64748b;
+        --accent: #2563eb;
+        --accent2: #0f766e;
+        --line: #d7e0ea;
+        --soft: #f8fafc;
+        --soft-blue: #eaf2ff;
+        --dark: #0f172a;
+        --shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+      }
+
+      * {
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Arial, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.7;
+      }
+
+      .layout {
+        max-width: 1220px;
+        margin: 0 auto;
+        padding: 22px;
+        display: grid;
+        grid-template-columns: 260px 1fr;
+        gap: 22px;
+      }
+
+      aside {
+        position: sticky;
+        top: 14px;
+        align-self: start;
+        min-height: calc(100vh - 28px);
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        box-shadow: var(--shadow);
+        padding: 15px;
+        overflow: visible;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding-bottom: 11px;
+        border-bottom: 1px solid var(--line);
+        margin-bottom: 11px;
+      }
+
+      .logo-mark {
+        width: 38px;
+        height: 38px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, var(--accent), #38bdf8);
+        color: white;
+        display: grid;
+        place-items: center;
+        font-weight: 900;
+      }
+
+      .logo strong {
+        display: block;
+        line-height: 1.2;
+      }
+
+      .logo span {
+        display: block;
+        color: var(--muted);
+        font-size: 13px;
+        margin-top: 2px;
+      }
+
+      nav {
+        display: grid;
+        gap: 6px;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: var(--text);
+        background: var(--soft);
+        border: 1px solid transparent;
+        border-radius: 12px;
+        padding: 7px 10px;
+        font-weight: 650;
+        font-size: 13.5px;
+        transition: 0.2s;
+      }
+
+      nav a:hover {
+        color: var(--accent);
+        background: var(--soft-blue);
+        border-color: #c7dbff;
+      }
+
+      .student {
+        margin-top: 12px;
+        padding: 12px;
+        border-radius: 14px;
+        background: #f8fafc;
+        border: 1px solid var(--line);
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      .student b {
+        color: var(--text);
+      }
+
+      .student p {
+        margin: 7px 0;
+      }
+
+      main {
+        min-width: 0;
+      }
+
+      .hero {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        margin-bottom: 22px;
+      }
+
+      .hero-top {
+        padding: 30px;
+        background:
+          linear-gradient(
+            135deg,
+            rgba(37, 99, 235, 0.95),
+            rgba(15, 118, 110, 0.92)
+          ),
+          radial-gradient(
+            circle at 80% 20%,
+            rgba(255, 255, 255, 0.35),
+            transparent 35%
+          );
+        color: white;
+      }
+
+      .label {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.16);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        padding: 6px 12px;
+        border-radius: 999px;
+        font-size: 13px;
+        font-weight: 800;
+        margin-bottom: 14px;
+      }
+
+      h1 {
+        margin: 0 0 12px;
+        font-size: clamp(30px, 5vw, 52px);
+        line-height: 1.1;
+      }
+
+      .hero-top p {
+        margin: 0;
+        max-width: 800px;
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 18px;
+      }
+
+      .hero-info {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0;
+        border-top: 1px solid var(--line);
+      }
+
+      .info-cell {
+        padding: 18px 20px;
+        border-right: 1px solid var(--line);
+        background: #ffffff;
+      }
+
+      .info-cell:last-child {
+        border-right: none;
+      }
+
+      .info-cell span {
+        display: block;
+        color: var(--muted);
+        font-size: 13px;
+        margin-bottom: 4px;
+      }
+
+      .info-cell strong {
+        display: block;
+        font-size: 15px;
+      }
+
+      section {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        box-shadow: var(--shadow);
+        padding: 26px;
+        margin-bottom: 22px;
+        scroll-margin-top: 22px;
+      }
+
+      .section-head {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        margin-bottom: 18px;
+      }
+
+      .num {
+        width: 40px;
+        height: 40px;
+        flex: 0 0 auto;
+        display: grid;
+        place-items: center;
+        border-radius: 12px;
+        background: var(--soft-blue);
+        color: var(--accent);
+        font-weight: 900;
+        border: 1px solid #c7dbff;
+      }
+
+      h2 {
+        margin: 0 0 5px;
+        font-size: clamp(23px, 3vw, 32px);
+        line-height: 1.2;
+      }
+
+      .lead {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .text-block p {
+        color: var(--muted);
+        margin: 0 0 12px;
+      }
+
+      .text-block p:last-child {
+        margin-bottom: 0;
+      }
+
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+      }
+
+      .cards.two {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .card {
+        background: #fbfdff;
+        border: 1px solid var(--line);
+        border-radius: 17px;
+        padding: 17px;
+      }
+
+      .card h3 {
+        margin: 0 0 7px;
+        font-size: 19px;
+      }
+
+      .card p,
+      .card li {
+        color: var(--muted);
+      }
+
+      .card ul {
+        margin: 9px 0 0;
+        padding-left: 19px;
+      }
+
+      .icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        background: var(--soft-blue);
+        display: grid;
+        place-items: center;
+        font-size: 22px;
+        margin-bottom: 11px;
+      }
+
+      .plan {
+        display: grid;
+        gap: 10px;
+        counter-reset: item;
+      }
+
+      .plan-row {
+        display: grid;
+        grid-template-columns: 42px 1fr;
+        gap: 12px;
+        align-items: start;
+        padding: 13px;
+        background: #fbfdff;
+        border: 1px solid var(--line);
+        border-radius: 15px;
+      }
+
+      .plan-row::before {
+        counter-increment: item;
+        content: counter(item);
+        width: 34px;
+        height: 34px;
+        border-radius: 11px;
+        display: grid;
+        place-items: center;
+        background: var(--accent);
+        color: white;
+        font-weight: 900;
+      }
+
+      .plan-row b {
+        display: block;
+        margin-bottom: 2px;
+      }
+
+      .plan-row span {
+        color: var(--muted);
+      }
+
+      .table-box {
+        overflow-x: auto;
+        border: 1px solid var(--line);
+        border-radius: 17px;
+      }
+
+      table {
+        width: 100%;
+        min-width: 720px;
+        border-collapse: collapse;
+        background: white;
+      }
+
+      th,
+      td {
+        padding: 14px 15px;
+        border-bottom: 1px solid var(--line);
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th {
+        background: #14213d;
+        color: white;
+      }
+
+      tr:last-child td {
+        border-bottom: none;
+      }
+
+      .steps {
+        display: grid;
+        gap: 12px;
+      }
+
+      .step {
+        display: grid;
+        grid-template-columns: 90px 1fr;
+        gap: 14px;
+        padding: 15px;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: #fbfdff;
+      }
+
+      .step-label {
+        color: var(--accent);
+        font-weight: 900;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .step h3 {
+        margin: 0 0 4px;
+        font-size: 18px;
+      }
+
+      .step p {
+        margin: 0 0 7px;
+        color: var(--muted);
+      }
+
+      .step p:last-child {
+        margin-bottom: 0;
+      }
+
+      .note {
+        margin-top: 16px;
+        padding: 15px 17px;
+        border-radius: 15px;
+        background: #fff7ed;
+        border: 1px solid #fed7aa;
+        color: #7c2d12;
+      }
+
+      .quiz {
+        background: #14213d;
+        color: white;
+        border-radius: 18px;
+        padding: 22px;
+      }
+
+      .quiz p {
+        color: rgba(255, 255, 255, 0.82);
+      }
+
+      .quiz-options {
+        display: grid;
+        gap: 10px;
+        margin-top: 12px;
+      }
+
+      .quiz button {
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        border-radius: 12px;
+        padding: 12px;
+        text-align: left;
+        cursor: pointer;
+        font-size: 15px;
+      }
+
+      .quiz button:hover {
+        background: rgba(255, 255, 255, 0.18);
+      }
+
+      #quizResult {
+        margin-top: 12px;
+        min-height: 23px;
+        font-weight: 800;
+      }
+
+      .speech {
+        background: #fbfdff;
+        border: 1px solid var(--line);
+        border-radius: 17px;
+        padding: 20px;
+      }
+
+      .speech p {
+        color: var(--muted);
+      }
+
+      .speech strong {
+        color: var(--text);
+      }
+
+      footer {
+        text-align: center;
+        color: var(--muted);
+        font-size: 14px;
+        padding: 6px 0 18px;
+      }
+
+      @media (max-width: 980px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+
+        aside {
+          position: static;
+          height: auto;
+        }
+
+        nav {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .hero-info,
+        .cards,
+        .cards.two {
+          grid-template-columns: 1fr;
+        }
+
+        .info-cell {
+          border-right: none;
+          border-bottom: 1px solid var(--line);
+        }
+
+        .info-cell:last-child {
+          border-bottom: none;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .layout {
+          padding: 12px;
+        }
+
+        nav {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-top,
+        section {
+          padding: 20px;
+        }
+
+        .step {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="layout">
+      <aside>
+        <div class="logo">
+          <div class="logo-mark">Wi</div>
+          <div>
+            <strong>Windows Networks</strong>
+            <span>навчальний сайт</span>
+          </div>
+        </div>
+
+        <nav>
+          <a href="#plan">План роботи</a>
+          <a href="#intro">Вступ</a>
+          <a href="#terms">Основні поняття</a>
+          <a href="#compare">Ethernet і Wi‑Fi</a>
+          <a href="#ethernet">Налаштування Ethernet</a>
+          <a href="#wifi">Налаштування Wi‑Fi</a>
+          <a href="#diagnostics">Діагностика</a>
+          <a href="#security">Безпека</a>
+          <a href="#quiz">Міні-тест</a>
+          <a href="#speech">Текст доповіді</a>
+        </nav>
+
+        <div class="student">
+          <p>
+            <b>Тема:</b><br />Організація та налаштування провідних та
+            безпровідних мереж у Windows
+          </p>
+          <p><b>Студентка:</b> Гринів Марʼяна</p>
+          <p><b>Група:</b> КН-31</p>
+          <p><b>Викладач:</b> Ярослав Никорак</p>
+        </div>
+      </aside>
+
+      <main>
+        <header class="hero">
+          <div class="hero-top">
+            <span class="label">Робота з ОС Windows</span>
+            <h1>
+              Організація та налаштування провідних та безпровідних мереж у
+              Windows
+            </h1>
+            <p>
+              На цьому сайті розглянуто, як у Windows організовується мережеве
+              підключення, які параметри потрібні для роботи мережі, чим
+              відрізняються Ethernet і Wi‑Fi та які дії допомагають усунути
+              типові проблеми з підключенням.
+            </p>
+          </div>
+          <div class="hero-info">
+            <div class="info-cell">
+              <span>Тип роботи</span>
+              <strong>тематичний сайт</strong>
+            </div>
+            <div class="info-cell">
+              <span>Операційна система</span>
+              <strong>Microsoft Windows</strong>
+            </div>
+            <div class="info-cell">
+              <span>Основний зміст</span>
+              <strong>Ethernet, Wi‑Fi, IP, DNS, DHCP</strong>
+            </div>
+          </div>
+        </header>
+
+        <section id="plan">
+          <div class="section-head">
+            <div class="num">01</div>
+            <div>
+              <h2>План роботи</h2>
+              <p class="lead">
+                Матеріал подано у вигляді навчального сайту, який поєднує
+                теоретичне пояснення та практичні кроки налаштування мережі.
+              </p>
+            </div>
+          </div>
+          <div class="plan">
+            <div class="plan-row">
+              <div>
+                <b>Вступ до теми</b
+                ><span
+                  >Пояснюється, навіщо потрібні мережеві підключення у Windows і
+                  які задачі вони дозволяють виконувати.</span
+                >
+              </div>
+            </div>
+            <div class="plan-row">
+              <div>
+                <b>Основні мережеві поняття</b
+                ><span
+                  >Розглядаються IP-адреса, MAC-адреса, шлюз, DNS і DHCP, без
+                  яких складно зрозуміти принцип роботи мережі.</span
+                >
+              </div>
+            </div>
+            <div class="plan-row">
+              <div>
+                <b>Порівняння Ethernet і Wi‑Fi</b
+                ><span
+                  >Пояснюється різниця між провідним та безпровідним
+                  підключенням, їхні переваги, недоліки та сфери
+                  використання.</span
+                >
+              </div>
+            </div>
+            <div class="plan-row">
+              <div>
+                <b>Практичне налаштування</b
+                ><span
+                  >Описуються кроки підключення до Ethernet і Wi‑Fi через
+                  графічні параметри Windows.</span
+                >
+              </div>
+            </div>
+            <div class="plan-row">
+              <div>
+                <b>Діагностика та безпека</b
+                ><span
+                  >Подано типові причини несправностей мережі, способи перевірки
+                  підключення і правила безпечного користування мережею.</span
+                >
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="intro">
+          <div class="section-head">
+            <div class="num">02</div>
+            <div>
+              <h2>Вступ</h2>
+              <p class="lead">
+                Мережеве підключення є однією з основних функцій сучасної
+                операційної системи, тому що більшість повсякденних дій
+                користувача пов’язана з Інтернетом або локальною мережею.
+              </p>
+            </div>
+          </div>
+          <div class="text-block">
+            <p>
+              В операційній системі Windows користувач може підключатися до
+              мережі двома основними способами: через провідну мережу Ethernet
+              або через безпровідну мережу Wi‑Fi. Обидва способи забезпечують
+              доступ до Інтернету, але відрізняються принципом підключення,
+              зручністю, стабільністю та рівнем захисту.
+            </p>
+            <p>
+              Правильне налаштування мережі важливе не тільки для відкриття
+              сайтів. Воно також потрібне для роботи з електронною поштою,
+              хмарними сервісами, навчальними платформами, відеозв’язком,
+              спільними папками, мережевими принтерами та іншими пристроями в
+              локальній мережі.
+            </p>
+          </div>
+          <div class="cards">
+            <article class="card">
+              <div class="icon">🌐</div>
+              <h3>Доступ до Інтернету</h3>
+              <p>
+                Мережа дозволяє користувачу працювати з браузером, поштою,
+                месенджерами, Google Classroom, GitHub, хмарними дисками та
+                іншими онлайн-сервісами.
+              </p>
+            </article>
+            <article class="card">
+              <div class="icon">🖥️</div>
+              <h3>Локальна мережа</h3>
+              <p>
+                У локальній мережі кілька пристроїв можуть взаємодіяти між
+                собою: обмінюватися файлами, використовувати спільні папки,
+                підключатися до принтерів або інших ресурсів.
+              </p>
+            </article>
+            <article class="card">
+              <div class="icon">⚙️</div>
+              <h3>Керування підключенням</h3>
+              <p>
+                Windows має графічні засоби для перегляду стану мережі, зміни
+                параметрів адаптера, підключення до Wi‑Fi, налаштування
+                IP-адреси та виправлення неполадок.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section id="terms">
+          <div class="section-head">
+            <div class="num">03</div>
+            <div>
+              <h2>Основні мережеві поняття</h2>
+              <p class="lead">
+                Щоб розуміти налаштування мережі у Windows, потрібно знати
+                основні параметри, які використовуються під час підключення
+                комп’ютера до мережі.
+              </p>
+            </div>
+          </div>
+          <div class="cards two">
+            <article class="card">
+              <h3>IP-адреса</h3>
+              <p>
+                IP-адреса — це адреса пристрою в мережі. Завдяки їй інші
+                пристрої можуть визначити, куди потрібно передати дані. У
+                домашній мережі IP-адреси часто мають вигляд 192.168.1.15 або
+                192.168.0.10.
+              </p>
+              <p>
+                IP-адреса може призначатися автоматично або вручну. Автоматичне
+                налаштування зручніше для звичайного користувача, а ручне може
+                використовуватися в навчальних, офісних або спеціально
+                налаштованих мережах.
+              </p>
+            </article>
+            <article class="card">
+              <h3>MAC-адреса</h3>
+              <p>
+                MAC-адреса — це фізична адреса мережевого адаптера. Вона
+                прив’язана до конкретного пристрою або мережевої карти та
+                використовується для ідентифікації обладнання в локальній
+                мережі.
+              </p>
+              <p>
+                На відміну від IP-адреси, яка може змінюватися, MAC-адреса
+                зазвичай є сталою для конкретного адаптера. Її можуть
+                використовувати роутери для фільтрації або розпізнавання
+                пристроїв.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Шлюз</h3>
+              <p>
+                Шлюз — це пристрій, через який комп’ютер виходить до інших
+                мереж. У домашніх умовах шлюзом найчастіше є Wi‑Fi-роутер, який
+                з’єднує локальну мережу з Інтернетом.
+              </p>
+              <p>
+                Якщо шлюз вказаний неправильно або недоступний, комп’ютер може
+                бачити локальну мережу, але не матиме доступу до Інтернету.
+              </p>
+            </article>
+            <article class="card">
+              <h3>DNS і DHCP</h3>
+              <p>
+                DNS — це служба, яка перетворює зрозумілі людині назви сайтів на
+                IP-адреси. Наприклад, користувач вводить адресу сайту словами, а
+                DNS допомагає комп’ютеру знайти відповідний сервер.
+              </p>
+              <p>
+                DHCP автоматично видає пристрою IP-адресу, маску мережі, шлюз і
+                DNS-сервери. Завдяки цьому користувачу не потрібно вводити
+                мережеві параметри вручну.
+              </p>
+            </article>
+          </div>
+          <div class="note">
+            <b>Примітка:</b> у більшості домашніх мереж достатньо залишити
+            автоматичне отримання IP-адреси, бо потрібні параметри видає роутер
+            через DHCP.
+          </div>
+        </section>
+
+        <section id="compare">
+          <div class="section-head">
+            <div class="num">04</div>
+            <div>
+              <h2>Порівняння Ethernet і Wi‑Fi</h2>
+              <p class="lead">
+                Ethernet і Wi‑Fi виконують одну основну задачу — підключають
+                пристрій до мережі, але використовують різні способи передавання
+                даних.
+              </p>
+            </div>
+          </div>
+          <div class="text-block">
+            <p>
+              Провідна мережа Ethernet використовує кабельне підключення. Вона
+              часто є стабільнішою, бо сигнал передається по кабелю і менше
+              залежить від перешкод, відстані або стін. Такий варіант підходить
+              для стаціонарних комп’ютерів, офісних робочих місць, навчальних
+              аудиторій або ситуацій, коли потрібне надійне з’єднання.
+            </p>
+            <p>
+              Безпровідна мережа Wi‑Fi використовує радіосигнал від роутера або
+              точки доступу. Вона зручна для ноутбуків, смартфонів і планшетів,
+              бо не потребує кабелю. Однак якість Wi‑Fi може залежати від
+              відстані до роутера, перешкод, кількості підключених пристроїв і
+              налаштувань самої мережі.
+            </p>
+          </div>
+          <div class="table-box">
+            <table>
+              <thead>
+                <tr>
+                  <th>Ознака</th>
+                  <th>Ethernet</th>
+                  <th>Wi‑Fi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Спосіб підключення</td>
+                  <td>
+                    Підключення здійснюється через мережевий кабель, який
+                    з’єднує комп’ютер із роутером, комутатором або мережевою
+                    розеткою.
+                  </td>
+                  <td>
+                    Підключення здійснюється через безпровідний сигнал, який
+                    передає роутер або точка доступу.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Стабільність</td>
+                  <td>
+                    Зазвичай стабільніше, тому що сигнал не залежить від якості
+                    покриття Wi‑Fi і менше піддається перешкодам.
+                  </td>
+                  <td>
+                    Може залежати від відстані до роутера, товщини стін,
+                    перешкод і навантаження на мережу.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Зручність</td>
+                  <td>
+                    Потрібен кабель, тому пристрій менш мобільний і прив’язаний
+                    до місця підключення.
+                  </td>
+                  <td>
+                    Зручне для ноутбуків і мобільних пристроїв, бо дозволяє
+                    працювати без кабелів.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Безпека</td>
+                  <td>
+                    Для підключення потрібен фізичний доступ до кабелю або
+                    мережевої розетки.
+                  </td>
+                  <td>
+                    Потрібно використовувати надійний пароль і сучасний тип
+                    захисту, щоб сторонні користувачі не підключилися до мережі.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="ethernet">
+          <div class="section-head">
+            <div class="num">05</div>
+            <div>
+              <h2>Налаштування провідної мережі Ethernet</h2>
+              <p class="lead">
+                Провідне підключення часто використовують тоді, коли потрібне
+                стабільне і передбачуване з’єднання з мережею.
+              </p>
+            </div>
+          </div>
+          <div class="steps">
+            <div class="step">
+              <div class="step-label">Крок 1</div>
+              <div>
+                <h3>Підключити мережевий кабель</h3>
+                <p>
+                  Спочатку потрібно під’єднати Ethernet-кабель до мережевого
+                  роз’єму комп’ютера або ноутбука. Інший кінець кабелю
+                  підключають до роутера, комутатора або мережевої розетки.
+                </p>
+                <p>
+                  Якщо кабель справний і адаптер увімкнений, Windows зазвичай
+                  автоматично визначає підключення.
+                </p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-label">Крок 2</div>
+              <div>
+                <h3>Відкрити параметри мережі</h3>
+                <p>
+                  У Windows потрібно перейти до розділу: Пуск → Параметри →
+                  Мережа й Інтернет → Ethernet. У цьому розділі відображається
+                  стан підключення та основні параметри мережі.
+                </p>
+                <p>
+                  Тут можна перевірити, чи бачить система мережевий адаптер і чи
+                  є активне підключення.
+                </p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-label">Крок 3</div>
+              <div>
+                <h3>Перевірити стан підключення</h3>
+                <p>
+                  Якщо все налаштовано правильно, Windows показує, що пристрій
+                  підключений до мережі. Після цього можна відкрити браузер і
+                  перевірити доступ до Інтернету.
+                </p>
+                <p>
+                  Якщо підключення неактивне, варто перевірити кабель, роутер,
+                  мережевий адаптер або спробувати інший порт.
+                </p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-label">Крок 4</div>
+              <div>
+                <h3>Налаштувати IP-параметри</h3>
+                <p>
+                  У більшості домашніх мереж IP-адреса, шлюз і DNS видаються
+                  автоматично через DHCP. Це найпростіший варіант для
+                  користувача.
+                </p>
+                <p>
+                  У деяких випадках може знадобитися ручне введення IP-адреси,
+                  маски, шлюзу та DNS. Таке налаштування частіше використовують
+                  в офісних або навчальних мережах.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="wifi">
+          <div class="section-head">
+            <div class="num">06</div>
+            <div>
+              <h2>Налаштування безпровідної мережі Wi‑Fi</h2>
+              <p class="lead">
+                Wi‑Fi є найзручнішим способом підключення для ноутбуків, тому що
+                користувач може працювати без мережевого кабелю.
+              </p>
+            </div>
+          </div>
+          <div class="steps">
+            <div class="step">
+              <div class="step-label">Крок 1</div>
+              <div>
+                <h3>Увімкнути Wi‑Fi</h3>
+                <p>
+                  У Windows потрібно відкрити панель швидких налаштувань або
+                  розділ «Мережа й Інтернет» і переконатися, що Wi‑Fi
+                  увімкнений.
+                </p>
+                <p>
+                  Якщо Wi‑Fi не відображається, причиною може бути вимкнений
+                  адаптер, відсутній драйвер або ввімкнений режим «У літаку».
+                </p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-label">Крок 2</div>
+              <div>
+                <h3>Вибрати потрібну мережу</h3>
+                <p>
+                  Після ввімкнення Wi‑Fi Windows показує список доступних
+                  безпровідних мереж. Користувач обирає назву своєї мережі,
+                  тобто SSID.
+                </p>
+                <p>
+                  Важливо уважно вибирати мережу, особливо в громадських місцях,
+                  де може бути багато схожих назв.
+                </p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-label">Крок 3</div>
+              <div>
+                <h3>Ввести пароль</h3>
+                <p>
+                  Якщо мережа захищена, система попросить ввести пароль. Пароль
+                  має збігатися з тим, який встановлений на роутері.
+                </p>
+                <p>
+                  Після успішного підключення Windows може запам’ятати мережу і
+                  надалі підключатися до неї автоматично.
+                </p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-label">Крок 4</div>
+              <div>
+                <h3>Вибрати тип мережі</h3>
+                <p>
+                  Після підключення Windows може запропонувати вибрати тип
+                  мережі. Для домашнього або довіреного середовища можна
+                  використовувати приватну мережу.
+                </p>
+                <p>
+                  Для університету, кафе, вокзалу або інших громадських місць
+                  краще обирати публічну мережу, бо вона обмежує видимість
+                  комп’ютера для інших користувачів.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="diagnostics">
+          <div class="section-head">
+            <div class="num">07</div>
+            <div>
+              <h2>Діагностика проблем із мережею</h2>
+              <p class="lead">
+                Якщо підключення не працює, проблему потрібно шукати послідовно:
+                від найпростіших причин до системних налаштувань.
+              </p>
+            </div>
+          </div>
+          <div class="text-block">
+            <p>
+              Найчастіші проблеми з мережею виникають через неправильний пароль
+              Wi‑Fi, відключений адаптер, несправний кабель, проблеми з роутером
+              або неправильні IP-параметри. Тому перевірку варто починати з
+              простих речей.
+            </p>
+            <p>
+              Windows має вбудовані інструменти для діагностики. У розділі
+              «Мережа й Інтернет» можна переглянути стан підключення, відкрити
+              додаткові параметри адаптера, запустити виправлення неполадок або
+              виконати скидання мережі.
+            </p>
+          </div>
+          <div class="cards two">
+            <article class="card">
+              <h3>Що перевірити спочатку?</h3>
+              <ul>
+                <li>чи підключений Ethernet-кабель і чи не пошкоджений він;</li>
+                <li>чи увімкнений Wi‑Fi-адаптер на ноутбуці;</li>
+                <li>чи не ввімкнений режим «У літаку»;</li>
+                <li>чи правильно введений пароль до Wi‑Fi;</li>
+                <li>чи працює роутер і чи є Інтернет на інших пристроях;</li>
+                <li>чи не вимкнений мережевий адаптер у параметрах Windows.</li>
+              </ul>
+            </article>
+            <article class="card">
+              <h3>Інструменти Windows</h3>
+              <ul>
+                <li>
+                  розділ «Мережа й Інтернет» для перегляду стану підключення;
+                </li>
+                <li>додаткові мережеві параметри для керування адаптерами;</li>
+                <li>
+                  засіб виправлення неполадок для автоматичного пошуку проблем;
+                </li>
+                <li>увімкнення або вимкнення мережевого адаптера;</li>
+                <li>
+                  скидання мережевих параметрів, якщо інші способи не
+                  допомагають;
+                </li>
+                <li>перевірка оновлень драйверів мережевого адаптера.</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section id="security">
+          <div class="section-head">
+            <div class="num">08</div>
+            <div>
+              <h2>Безпека під час роботи з мережею</h2>
+              <p class="lead">
+                Підключення до мережі має бути не лише зручним, а й безпечним,
+                особливо коли користувач працює з особистими даними.
+              </p>
+            </div>
+          </div>
+          <div class="text-block">
+            <p>
+              Безпека мережі залежить від налаштувань роутера, типу підключення,
+              пароля Wi‑Fi та поведінки користувача. У домашній мережі потрібно
+              використовувати надійний пароль, не залишати стандартні паролі на
+              роутері та періодично оновлювати систему.
+            </p>
+            <p>
+              У публічних мережах потрібно бути обережнішим, бо до них можуть
+              підключатися різні користувачі. У таких мережах краще не
+              відкривати спільний доступ до файлів і не вводити важливі дані на
+              підозрілих сайтах.
+            </p>
+          </div>
+          <div class="cards">
+            <article class="card">
+              <div class="icon">🔑</div>
+              <h3>Надійний пароль</h3>
+              <p>
+                Для домашнього Wi‑Fi потрібно використовувати складний пароль,
+                який не складається лише з простих слів, дат народження або
+                очевидних комбінацій.
+              </p>
+            </article>
+            <article class="card">
+              <div class="icon">🛡️</div>
+              <h3>Публічні мережі</h3>
+              <p>
+                У громадських місцях краще обирати публічний тип мережі, бо він
+                обмежує доступ інших пристроїв до комп’ютера.
+              </p>
+            </article>
+            <article class="card">
+              <div class="icon">🔄</div>
+              <h3>Оновлення</h3>
+              <p>
+                Оновлення Windows і драйверів мережевого адаптера допомагають
+                виправляти помилки, покращувати стабільність і підвищувати
+                безпеку.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section id="quiz">
+          <div class="section-head">
+            <div class="num">09</div>
+            <div>
+              <h2>Міні-тест</h2>
+              <p class="lead">
+                Коротке питання для перевірки розуміння одного з базових понять
+                теми.
+              </p>
+            </div>
+          </div>
+          <div class="quiz">
+            <h3>
+              Що автоматично видає IP-адресу пристрою в більшості домашніх
+              мереж?
+            </h3>
+            <p>Оберіть правильну відповідь:</p>
+            <div class="quiz-options">
+              <button onclick="checkAnswer(false)">DNS</button>
+              <button onclick="checkAnswer(true)">DHCP</button>
+              <button onclick="checkAnswer(false)">MAC-адреса</button>
+              <button onclick="checkAnswer(false)">Bluetooth</button>
+            </div>
+            <div id="quizResult"></div>
+          </div>
+        </section>
+
+        <section id="speech">
+          <div class="section-head">
+            <div class="num">10</div>
+            <div>
+              <h2>Текст доповіді</h2>
+              <p class="lead">
+                Короткий текст для представлення виконаної роботи.
+              </p>
+            </div>
+          </div>
+          <div class="speech">
+            <p>
+              <strong
+                >Тема моєї роботи — «Організація та налаштування провідних та
+                безпровідних мереж у Windows».</strong
+              >
+              У роботі розглянуто, як у Windows організовується підключення
+              комп’ютера до мережі та які параметри потрібні для стабільної
+              роботи з’єднання.
+            </p>
+            <p>
+              Провідна мережа Ethernet підключається за допомогою мережевого
+              кабелю. Вона зазвичай є стабільнішою і менше залежить від
+              зовнішніх перешкод, тому часто використовується для стаціонарних
+              комп’ютерів, офісів і навчальних аудиторій.
+            </p>
+            <p>
+              Безпровідна мережа Wi‑Fi працює через сигнал від роутера або точки
+              доступу. Вона зручніша для ноутбуків і мобільних пристроїв, тому
+              що не потребує кабелю. Водночас якість Wi‑Fi може залежати від
+              відстані до роутера, перешкод і кількості підключених пристроїв.
+            </p>
+            <p>
+              На сайті також пояснено основні мережеві поняття: IP-адреса,
+              MAC-адреса, шлюз, DNS і DHCP. IP-адреса потрібна для ідентифікації
+              пристрою в мережі, DNS допомагає відкривати сайти за назвами, а
+              DHCP автоматично видає мережеві параметри.
+            </p>
+            <p>
+              У практичній частині описано, як у Windows налаштовувати Ethernet
+              і Wi‑Fi через розділ «Мережа й Інтернет». Також розглянуто типові
+              проблеми: неправильний пароль, вимкнений Wi‑Fi, несправний кабель,
+              режим «У літаку» або проблеми з роутером.
+            </p>
+            <p>
+              <strong>Висновок:</strong> правильне налаштування мережі у Windows
+              забезпечує стабільний доступ до Інтернету, зручну роботу з
+              локальними ресурсами та безпечне використання комп’ютера в
+              домашніх, навчальних і публічних мережах.
+            </p>
+          </div>
+        </section>
+
+        <footer>Тематичний сайт для доповіді з роботи з ОС Windows</footer>
+      </main>
+    </div>
+
+    <script>
+      function checkAnswer(isCorrect) {
+        const result = document.getElementById("quizResult");
+        if (isCorrect) {
+          result.textContent =
+            "Правильно! DHCP автоматично видає IP-адресу та інші мережеві параметри.";
+        } else {
+          result.textContent = "Не зовсім. Правильна відповідь: DHCP.";
+        }
+      }
+    </script>
+  </body>
+</html>
